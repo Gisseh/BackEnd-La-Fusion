@@ -1,6 +1,8 @@
-require("dotenv").config();
+require("dotenv").config({
+    path: process.env.NODE_ENV === 'production' ? '.env.production' : '.env'
+    });
 
-// const exp = require("constants");
+const exp = require("constants");
 const express = require("express");
 const app = express();
 
@@ -28,6 +30,6 @@ app.get("/productos/:id", (req, res) => {
     res.send("Producto: " + req.params.id);
 });
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
