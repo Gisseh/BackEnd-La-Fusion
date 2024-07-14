@@ -37,7 +37,11 @@ const upload = multer({
 
 const controller = require("../controllers/productos.controller");
 
+// El prefijo /productos
+
 router.get("/", controller.index);
+
+// /productos/3/categoria/5?order=nombre&limit=10
 
 router.get("/:id", controller.show);
 router.post("/", upload.single("imagen"), controller.store);
